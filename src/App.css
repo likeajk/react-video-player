@@ -1,0 +1,249 @@
+#root {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+}
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+.video-wrapper {
+	width: 640px;
+	margin: 0 auto;
+}
+
+.video-player {
+	width: 640px;
+}
+
+button {
+	margin: 2px;
+	line-height: 1px;
+}
+
+button:hover {
+	background-color: #e6e6e6;
+}
+
+@media all and (max-width: 767px) {
+	.video-player {
+		width: 100%;
+		height: auto;
+	}
+}
+
+/* Video Container */
+.video-container {
+	position: relative;
+	width: 100%;
+}
+
+/* Video Controls */
+.video-controls {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+	border-radius: 0 0 8px 8px;
+}
+
+.video-controls button {
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	color: white;
+	padding: 8px 12px;
+	border-radius: 4px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	transition: background 0.2s;
+}
+
+.video-controls button:hover {
+	background: rgba(255, 255, 255, 0.25);
+}
+
+.progress-bar {
+	flex: 1;
+	height: 5px;
+	cursor: pointer;
+	accent-color: #3b82f6;
+}
+
+.volume-bar {
+	width: 80px;
+	height: 5px;
+	cursor: pointer;
+	accent-color: #3b82f6;
+}
+
+/* Quality Selector */
+.quality-selector {
+	position: relative;
+}
+
+.quality-btn {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	color: white;
+	padding: 8px 12px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 12px;
+	transition: background 0.2s;
+}
+
+.quality-btn:hover {
+	background: rgba(255, 255, 255, 0.25);
+}
+
+.quality-label {
+	font-size: 11px;
+	font-weight: 500;
+}
+
+.quality-menu {
+	position: absolute;
+	bottom: 100%;
+	right: 0;
+	margin-bottom: 8px;
+	background: rgba(28, 28, 28, 0.95);
+	border-radius: 8px;
+	padding: 8px 0;
+	min-width: 120px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+	z-index: 100;
+}
+
+.quality-option {
+	padding: 10px 16px;
+	cursor: pointer;
+	font-size: 13px;
+	color: #e0e0e0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	transition: background 0.15s;
+}
+
+.quality-option:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.quality-option.active {
+	color: #3b82f6;
+	font-weight: 600;
+}
+
+.hd-badge {
+	background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+	color: white;
+	font-size: 9px;
+	font-weight: 700;
+	padding: 2px 5px;
+	border-radius: 3px;
+	margin-left: 8px;
+}
+
+/* Timeline */
+.timeline-container {
+	flex: 1;
+	position: relative;
+	height: 24px;
+	cursor: pointer;
+	padding: 8px 0;
+}
+
+.timeline-track {
+	position: relative;
+	height: 8px;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.chapter-segment {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.3);
+	border-right: 2px solid rgba(0, 0, 0, 0.4);
+	transition: background 0.2s;
+}
+
+.chapter-segment:last-child {
+	border-right: none;
+}
+
+.timeline-container:hover .chapter-segment {
+	background: rgba(255, 255, 255, 0.4);
+}
+
+.timeline-progress {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background: linear-gradient(90deg, #3b82f6, #60a5fa);
+	border-radius: 4px 0 0 4px;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.timeline-playhead {
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 14px;
+	height: 14px;
+	background: white;
+	border-radius: 50%;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	pointer-events: none;
+	z-index: 2;
+	transition: transform 0.1s;
+}
+
+.timeline-container:hover .timeline-playhead {
+	transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Timeline Tooltip */
+.timeline-tooltip {
+	position: absolute;
+	bottom: 100%;
+	transform: translateX(-50%);
+	margin-bottom: 8px;
+	background: rgba(0, 0, 0, 0.9);
+	border-radius: 6px;
+	padding: 8px 12px;
+	pointer-events: none;
+	white-space: nowrap;
+	z-index: 100;
+	min-width: 60px;
+	text-align: center;
+}
+
+.tooltip-time {
+	font-size: 14px;
+	font-weight: 600;
+	color: white;
+}
+
+.tooltip-chapter {
+	font-size: 11px;
+	color: #a0a0a0;
+	margin-top: 4px;
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
